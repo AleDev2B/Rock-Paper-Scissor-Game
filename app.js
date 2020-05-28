@@ -9,91 +9,83 @@ const scissorSelector = document.getElementById("scissor");
 const resultSelector = $(".result");
 const iconSelector = $(".icon");
 
-function numRandGen() {
+function RandNumGen() {
  let compRandGen = Math.floor(Math.random() * 3);
  return compRandGen
 }
 
 function computerChoice() {
   let arrayObj = [handSelector, paperSelector, scissorSelector];
-  return arrayObj[numRandGen()]
+  return arrayObj[RandNumGen()]
 }
 
-handSelector.addEventListener("click", function(){
-  userChoise = $(this);
-  let compChoise = computerChoice()
-  console.log(compChoise);
-  resultSelector.html("");
+function gameInit(userSelection) {
+  userSelection.addEventListener("click", function(){
+    userChoise = $(this);
+    let compChoise = computerChoice()
+    // console.log(compChoise);
+    resultSelector.html("");
+  })
+};
+
+  gameInit(handSelector);
   if (compChoise == userChoise[0]) {
-    console.log("you draw");
+    // console.log("you draw");
     resultSelector.append("It's a Draw!! You too made the same choise");
   }
   else if (compChoise == paperSelector) {
-    console.log("you loose");
+    // console.log("you loose");
     compScore++;
-    console.log(compScore);
+    // console.log(compScore);
     compScoreSpan.innerHTML = compScore;
     iconSelector.addClass('icon-loose');
-    resultSelector.append("Paper covers Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');
-
-  } else {
-    console.log("you WOOn");
+    resultSelector.append("Paper covers Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>')} else {
+    // console.log("you WOOn");
     userScore++;
-    console.log(userScore);
+    // console.log(userScore);
     userScoreSpan.innerHTML = userScore;
     iconSelector.addClass('icon-wins');
     resultSelector.append("Rock smash Scissor. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png');
-  }
-});
+  };
 
-paperSelector.addEventListener("click", function(){
-  userChoise = $(this);
-  let compChoise = computerChoice()
-  console.log(compChoise);
-  resultSelector.html("");
+  gameInit(paperSelector);
   if (compChoise == userChoise[0]) {
-    console.log("you draw");
+    // console.log("you draw");
     resultSelector.append("It's a Draw!! You too made the same choise");
   }
   else if (compChoise == paperSelector) {
-    console.log("you loose");
+    // console.log("you loose");
     compScore++;
     compScoreSpan.innerHTML = compScore;
     iconSelector.addClass('icon-loose');
     resultSelector.append("Paper beat Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');
 
   } else {
-    console.log("you WOOn");
+    // console.log("you WOOn");
     userScore++
-    console.log(userScore);
+    // console.log(userScore);
     userScoreSpan.innerHTML = userScore;
     iconSelector.addClass('icon-wins');
     resultSelector.append("Rock beat Scissor. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png"/>');
-  }
-});
+  };
 
-scissorSelector.addEventListener("click", function(){
-  userChoise = $(this);
-  let compChoise = computerChoice()
-  console.log(compChoise);
-  resultSelector.html("");
+  gameInit(scissorSelector);
   if (compChoise == userChoise[0]) {
-    console.log("you draw");
+    // console.log("you draw");
     resultSelector.append("It's a Draw!! You too made the same choise");
   }
   else if (compChoise == paperSelector) {
-    console.log("you loose");
+    // console.log("you loose");
     compScore++;
     compScoreSpan.innerHTML = compScore;
     iconSelector.addClass('icon-loose');
     resultSelector.append("Paper beats Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');
 
   } else {
-    console.log("you WOOn");
+    // console.log("you WOOn");
     userScore++;
-    console.log(userScore);
+    // console.log(userScore);
     userScoreSpan.innerHTML = userScore;
     iconSelector.addClass('icon-wins');
     resultSelector.append("Scissor cuts the paper. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png');
-  }
-});
+  };
