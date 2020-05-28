@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;0,500;0,600;1,600&display=swap');
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Asap', sans-serif;
+}
+body{
+  background: #23232A;
+}
+
+header {
+  color: #23232A;
+  padding:20px 0;
+  font-weight:bold;
+  font-size: 24px;
+  background: white;
+  text-align: center;
+}
+
+.textAlignCenterClass{
+  text-align: center;
+}
+
+.panel {
+  border: 2px solid white;
+  position: relative;
+  width: 150px;
+  margin: 25px auto;
+  padding: 10px;
+  border-radius: 4px;
+  color: white;
+}
+
+.panel-square{
+  font-size: 16px;
+  background: red;
+  position: absolute;
+}
+
+#user {
+  top: 15px;
+  left: -15px;
+}
+
+#comp {
+  top: 15px;
+  right: -18px;
+}
+
+span{
+  font-size: 22px;
+  color: white;
+}
+
+.result{
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+.icons{
+  padding: 20px;
+}
+
+.icon{
+  display: inline-block;
+  border: 2px solid white;
+  padding:5px;
+  border-radius: 50%;
+  margin: 0px 15px 0px 15px;
+}
+
+.icon-wins{
+  border: 2px solid green;
+}
+.icon-loose{
+  border: 2px solid red;
+}
+.icon:hover{
+  cursor: pointer;
+  background: rgb(43,43,48);
+  transition: all 0.3s ease;
+}
+
+
+p.text{
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
