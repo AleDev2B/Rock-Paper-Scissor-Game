@@ -3,9 +3,9 @@ var userScore = 0;
 var compScore = 0;
 const userScoreSpan = document.getElementById("user_score");
 const compScoreSpan = document.getElementById("comp_score");
-const handSelector = document.getElementById("hand");
-const paperSelector = document.getElementById("paper");
-const scissorSelector = document.getElementById("scissor");
+const handSelector = $("#hand");
+const paperSelector = $("#paper");
+const scissorSelector = $("#scissor");
 const resultSelector = $(".result");
 const iconSelector = $(".icon");
 
@@ -19,81 +19,38 @@ function computerChoice() {
   return arrayObj[numRandGen()]
 }
 
-handSelector.addEventListener("click", function(){
-  userChoise = $(this);
-  let compChoise = computerChoice()
-  // console.log(compChoise);
-  resultSelector.html("");
-  if (compChoise == userChoise[0]) {
-    // console.log("you draw");
-    resultSelector.append("It's a Draw!! You too made the same choise");
-  }
-  else if (compChoise == paperSelector) {
-    // console.log("you loose");
-    compScore++;
-    // console.log(compScore);
-    compScoreSpan.innerHTML = compScore;
-    iconSelector.addClass('icon-loose');
-    resultSelector.append("Paper covers Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');
+function game_init(clickSelection) {
 
-  } else {
-    // console.log("you WOOn");
-    userScore++;
-    // console.log(userScore);
-    userScoreSpan.innerHTML = userScore;
-    iconSelector.addClass('icon-wins');
-    resultSelector.append("Rock smash Scissor. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png');
-  }
-});
+    clickSelection.on("click", function(){
+    iconSelector.removeClass("icon-loose");
+    iconSelector.removeClass("icon-wins");
+    userChoise = $(this);
+    let compChoise = computerChoice()
+    // console.log(compChoise);
+    resultSelector.html("");
+    if (compChoise == userChoise[0]) {
+      // console.log("you draw");
+      resultSelector.append("It's a Draw!! You too made the same choise");
+    }
+    else if (compChoise == paperSelector) {
+      // console.log("you loose");
+      compScore++;
+      console.log(compScore);
+      compScoreSpan.innerHTML = compScore;
 
-paperSelector.addEventListener("click", function(){
-  userChoise = $(this);
-  let compChoise = computerChoice()
-  // console.log(compChoise);
-  resultSelector.html("");
-  if (compChoise == userChoise[0]) {
-    // console.log("you draw");
-    resultSelector.append("It's a Draw!! You too made the same choise");
-  }
-  else if (compChoise == paperSelector) {
-    // console.log("you loose");
-    compScore++;
-    compScoreSpan.innerHTML = compScore;
-    iconSelector.addClass('icon-loose');
-    resultSelector.append("Paper beat Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');
+      $(this).parents(".icon").addClass('icon-loose');
+      resultSelector.append("Paper covers Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');} else {
+      // console.log("you WOOn");
+      userScore++;
+      console.log(userScore);
+      userScoreSpan.innerHTML = userScore;
 
-  } else {
-    // console.log("you WOOn");
-    userScore++
-    // console.log(userScore);
-    userScoreSpan.innerHTML = userScore;
-    iconSelector.addClass('icon-wins');
-    resultSelector.append("Rock beat Scissor. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png"/>');
-  }
-});
+      $(this).parents(".icon").addClass('icon-wins');
+      resultSelector.append("Rock smash Scissor. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png');
+    }
+  });
+}
 
-scissorSelector.addEventListener("click", function(){
-  userChoise = $(this);
-  let compChoise = computerChoice()
-  // console.log(compChoise);
-  resultSelector.html("");
-  if (compChoise == userChoise[0]) {
-    // console.log("you draw");
-    resultSelector.append("It's a Draw!! You too made the same choise");
-  }
-  else if (compChoise == paperSelector) {
-    // console.log("you loose");
-    compScore++;
-    compScoreSpan.innerHTML = compScore;
-    iconSelector.addClass('icon-loose');
-    resultSelector.append("Paper beats Rock. Computer Win, You Loose" + '<img src="https://img.icons8.com/emoji/48/000000/pile-of-poo.png"/>');
-
-  } else {
-    // console.log("you WOOn");
-    userScore++;
-    // console.log(userScore);
-    userScoreSpan.innerHTML = userScore;
-    iconSelector.addClass('icon-wins');
-    resultSelector.append("Scissor cuts the paper. You Win" + '<img src="https://img.icons8.com/emoji/48/000000/fire.png');
-  }
-});
+game_init(handSelector);
+game_init(paperSelector);
+game_init(scissorSelector);
